@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" style="height: 100%;">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body style="height: 100%;"class="bg-light">
+  <header>
+    <nav class="navbar navbar-expand navbar-dark bg-dark" style="margin-bottom: 30px;">
+      <a class="navbar-brand my-0 mr-md-auto ml-md-5" href='{{url_for('showCatalog')}}'>Catalog App</a>
+      <a class="btn btn-outline-primary" href='{{url_for('disconnect')}}'>Logout</a>
+    </nav>
+  </header>
+  <main role="main" style="height: 80%;" >
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+    <li> <strong> {{ message }} </strong> </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <div class = "container">
+      <div class = "row bg-white" style="box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05)">
+        <div class = "col-sm-4 box-shadow">
+          <h4>New Item</h4>
+
+          <form action ="#" method = 'post'>
+            <p>Title:</p>
+            <input type = 'text' size = '30' name='title' style="margin-bottom: 25px;"/>
+            <p>Description:</p>
+            <input type = 'text' size = '30' name='description' style="margin-bottom: 25px;"/>
+            <p>Category:</p>
+        
+            <select name="category">
+                {% for i in categories %}
+        
+                <option value="{{ i.name }}" >{{ i.name }}</option>
+                {% endfor %}
+            </select>
+        </br></br>
+        
+            <input type = 'submit' value = 'Submit' />
+        
+          </form>
+        </br>
+          <a href = '{{url_for('showCatalog')}}'> Cancel </a>
+              
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Created by Ronald van der Rest</p>
+      </div>
+    </footer>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+
